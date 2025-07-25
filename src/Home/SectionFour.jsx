@@ -64,7 +64,7 @@ const SectionFour = () => {
           </div>
         </div>
         <div className="card" id="p3">
-          <img src="public/image/funKIt.png" alt="" />
+          <img src="/image/funKIt.png" alt="" />
           <div className="text">
             <h1>Fun & Learn Kit</h1>
             <p>
