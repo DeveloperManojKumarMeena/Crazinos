@@ -7,15 +7,15 @@ const Images = (props) => {
   const [photos, setPhotos] = useState([
     {
       id: 1,
-      photo: "public/image/PriceTag.png"
+      photo: "/image/PriceTag.png"
     },
     {
       id: 2,
-      photo: "public/image/Stand.png"
+      photo: "/image/Stand.png"
     },
     {
       id: 3,
-      photo: "public/image/logo.png"
+      photo: "/image/logo.png"
     }
   ]);
 
