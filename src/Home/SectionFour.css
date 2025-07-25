@@ -1,0 +1,92 @@
+@font-face {
+    font-family: Manoj;
+    src: url(../Fonts/3856NeueMachina.woff2);
+}
+.section4{
+    height: 100vh;
+    width: 100%;
+     background-color: rgb(33, 4, 4);;
+}
+.line{
+    height: 30vh;
+    width: 100%;
+    background-color: rgba(126, 19, 19, 0.129);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    color: #faf6f0;
+    position: relative;
+    border-radius: 20px;
+}
+.line svg{
+    width: 100%;
+    border-color: rgba(89, 51, 124, 0.636);
+    position: absolute;
+    top: 0px;
+
+}
+.line h1{
+    padding: 0px;
+    position: absolute;
+    top: 50px;
+    text-align: center;
+    font-family: Manoj; 
+}
+.cardsection{
+height: 70vh;
+width: 100%;
+display: flex;
+margin: auto;
+
+}
+.cardsection:nth-child(2){
+    background-color: rgba(179, 0, 255, 0.721);
+    border-radius: 20px;
+}
+.card{
+    height: 60vh;
+    width: 30%;
+    background-color: rgba(255, 106, 8, 0.319);
+    border-radius: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    margin: auto;
+
+}
+.card img{
+    height: 70%;
+    width: 70%;
+    padding: 0px;
+}
+.card h1{
+    color: white;
+    text-align: center;
+    font-family: Manoj;
+}
+.card p{
+    color: white;
+    padding: 10px;
+    font-family: roboto mono;
+}
+
+#p1{
+    background-color: #110f269c;
+}
+#p2{
+    background: linear-gradient(43deg,rgba(81, 56, 123, 1) 0%, rgba(246, 165, 46, 1) 100%);
+}
+#p3{
+    background-color: rgba(255, 0, 0, 0.652);
+}
+#p1:hover{
+    scale: 1.1;
+}
+#p2:hover{
+    scale: 1.1;
+}
+#p3:hover{
+    scale: 1.1;
+}

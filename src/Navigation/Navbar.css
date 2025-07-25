@@ -1,0 +1,40 @@
+@font-face {
+  font-family: Manoj;
+  src: url(../Fonts/3856NeueMachina.woff2);
+}
+#navbar {
+  position: fixed;
+  top: 0;
+  height: 70px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+}
+.logo img {
+  height: 20px;
+}
+.menu {
+  display: flex;
+  gap: 2em;
+}
+.menu a {
+  text-decoration: none;
+  color: white;
+  font-size: 20px;
+  font-family: Manoj;
+}
+.menu a:hover {
+  color: orange;
+  font-weight: 800;
+}
+.menu a:active{
+  color: red;
+}
+
+.menu a img {
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+}

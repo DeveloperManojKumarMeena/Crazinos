@@ -1,0 +1,574 @@
+/* src/components/Cart/Cart.css */
+
+/* Google Fonts - Amazon typically uses a variation of Arial/Helvetica, but Open Sans is a good free alternative */
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap');
+
+:root {
+    /* Amazon-like color palette */
+    --amazon-blue: #0F1111;
+    --amazon-dark-blue: #0E1A23; /* For very dark text */
+    --amazon-orange: #FF9900;
+    --amazon-yellow: #FFBD48;
+    --amazon-gray-light: #F0F2F5; /* Background */
+    --amazon-gray-medium: #DDDDDD; /* Borders, separators */
+    --amazon-gray-dark: #888888; /* Text color for less important info */
+    --amazon-white: #FFFFFF;
+    --amazon-green: #007600; /* For success/free delivery */
+    --amazon-red: #CC0C39; /* For errors/delete */
+}
+
+
+
+.cart-page-wrapper {
+    width: 100%;
+    /* max-height: 100vh; */ /* This is applied to the .cart-container instead for better control */
+    min-height: 100vh; /* Ensures background fills entire page if content is short */
+    padding-top: 80px; /* Required padding-top */
+    box-sizing: border-box; /* Include padding in element's total width and height */
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Keeps the cart at the top of the wrapper after padding */
+    overflow-y: auto; /* Allows wrapper to scroll if overall content exceeds viewport */
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+    padding-bottom: 20px; /* Add some space at the bottom when scrolled */
+}
+
+.cart-container {
+    display: flex; /* Use flexbox for main content and sidebar layout */
+    gap: 20px; /* Space between main content and sidebar */
+    width: 95%; /* Adjust width for responsive behavior */
+    max-width: 1200px; /* Wider for more content */
+    margin: 0 auto;
+    background-color: transparent; /* Wrapper takes background, main elements have white */
+    border-radius: 8px; /* Subtle rounding */
+    box-shadow: none; /* No shadow on container, individual boxes will have it */
+    color: var(--amazon-blue);
+    
+    /* Crucial for max-height and internal scrolling */
+    max-height: calc(100vh - 80px - 40px); /* 100vh - padding-top - extra margin for responsiveness */
+    overflow: hidden; /* Prevents cart-container itself from overflowing */
+}
+
+.cart-main-content {
+    flex: 3; /* Takes more space */
+    background-color: var(--amazon-white);
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* Subtle shadow for content box */
+    display: flex;
+    flex-direction: column; /* Allows its children to stack vertically */
+    overflow: hidden; /* Prevents internal overflow */
+}
+
+.cart-sidebar {
+    flex: 1; /* Takes less space */
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Space between sidebar boxes */
+}
+
+.order-summary-box,
+.promo-code-box,
+.address-payment-box {
+    background-color: var(--amazon-white);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* Subtle shadow for each box */
+    border: 1px solid var(--amazon-gray-medium); /* Light border */
+}
+
+h2.cart-title {
+    text-align: left; /* Align to left like Amazon */
+    font-size: 2em;
+    font-weight: 500;
+    margin-top: 0;
+    margin-bottom: 20px;
+    border-bottom: 1px solid var(--amazon-gray-medium);
+    padding-bottom: 15px;
+    color: var(--amazon-blue);
+    flex-shrink: 0; /* Don't allow title to shrink */
+}
+
+h4 {
+    font-size: 1.1em;
+    font-weight: 600;
+    margin-top: 0;
+    margin-bottom: 15px;
+    color: var(--amazon-blue);
+}
+
+/* Scrollable area for cart items */
+.cart-items-scrollable-area {
+    flex-grow: 1; /* Allows this div to take up remaining vertical space */
+    overflow-y: auto; /* Adds scrollbar if content overflows vertically */
+    padding-right: 15px; /* Space for the scrollbar */
+    margin-bottom: 20px; /* Space before the summary */
+}
+
+/* Custom scrollbar for Webkit browsers (Chrome, Safari) */
+.cart-items-scrollable-area::-webkit-scrollbar {
+    width: 8px;
+}
+
+.cart-items-scrollable-area::-webkit-scrollbar-track {
+    background: var(--amazon-gray-light);
+    border-radius: 10px;
+}
+
+.cart-items-scrollable-area::-webkit-scrollbar-thumb {
+    background: var(--amazon-gray-dark);
+    border-radius: 10px;
+}
+
+.cart-items-scrollable-area::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+/* Individual cart item styles */
+.cart-item {
+    display: flex;
+    align-items: flex-start; /* Align to top for item image/details */
+    padding: 20px 0;
+    border-bottom: 1px solid var(--amazon-gray-medium); /* Clear separator */
+    position: relative;
+    gap: 15px; /* Spacing between image and details */
+}
+
+.cart-item:last-child {
+    border-bottom: none;
+}
+
+.item-image-wrapper {
+    flex-shrink: 0; /* Don't shrink image wrapper */
+    width: 120px; /* Amazon-like image size */
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.item-image-wrapper img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain; /* Contain to show full product */
+    border-radius: 4px; /* Slightly rounded corners */
+}
+
+.item-details {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 5px; /* Smaller gap between name, price, controls */
+}
+
+.item-name {
+    font-size: 1em;
+    font-weight: 500;
+    color: var(--amazon-blue);
+    line-height: 1.4;
+    margin: 0;
+}
+
+.item-price {
+    font-size: 1.1em;
+    font-weight: 600;
+    color: var(--amazon-red); /* Red for price, like amazon's sale price */
+    margin: 0;
+}
+
+.item-quantity-controls {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 10px;
+    font-size: 0.9em;
+    color: var(--amazon-gray-dark);
+}
+
+.item-quantity-controls label {
+    font-weight: 600;
+}
+
+.item-quantity-controls select {
+    padding: 5px 8px;
+    border: 1px solid var(--amazon-gray-medium);
+    border-radius: 4px;
+    background-color: var(--amazon-white);
+    font-size: 0.9em;
+    cursor: pointer;
+}
+
+.item-quantity-controls .separator {
+    color: var(--amazon-gray-dark);
+}
+
+.delete-item-btn {
+    background: none;
+    border: none;
+    color: var(--amazon-blue); /* Dark text for delete */
+    cursor: pointer;
+    font-size: 0.9em;
+    padding: 0;
+    text-decoration: none; /* Make it look like a link */
+    transition: color 0.2s ease;
+}
+
+.delete-item-btn:hover {
+    color: var(--amazon-orange);
+    text-decoration: underline;
+}
+
+.item-total-price {
+    font-size: 1.2em;
+    font-weight: 700;
+    color: var(--amazon-blue);
+    margin-left: auto; /* Push to the right */
+    flex-shrink: 0;
+}
+
+/* Common button styles */
+.action-button {
+    display: block;
+    width: 100%;
+    padding: 10px 15px;
+    border-radius: 7px;
+    border: 1px solid;
+    cursor: pointer;
+    font-size: 0.95em;
+    font-weight: 600;
+    text-align: center;
+    transition: background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+    margin-top: 15px;
+}
+
+.primary-button {
+    background-color: var(--amazon-yellow);
+    border-color: var(--amazon-orange);
+    color: var(--amazon-blue);
+}
+
+.primary-button:hover {
+    background-color: #F7CA00; /* Slightly darker yellow */
+    border-color: #EDAC00;
+}
+
+.secondary-button {
+    background-color: var(--amazon-white);
+    border-color: var(--amazon-gray-medium);
+    color: var(--amazon-blue);
+}
+
+.secondary-button:hover {
+    background-color: #FAFAFA;
+    border-color: #C0C0C0;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.proceed-to-checkout-btn {
+    background-color: var(--amazon-yellow);
+    border: 1px solid var(--amazon-orange);
+    color: var(--amazon-blue);
+    padding: 10px 20px;
+    font-size: 1em;
+    font-weight: 600;
+    border-radius: 7px;
+    cursor: pointer;
+    width: 100%;
+    text-align: center;
+    margin-top: 15px;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.proceed-to-checkout-btn:hover {
+    background-color: #F7CA00;
+    border-color: #EDAC00;
+}
+
+
+/* Order Summary */
+.cart-summary-main {
+    flex-shrink: 0; /* Ensures this part doesn't shrink when scrollable area grows */
+    padding-top: 15px;
+    border-top: 1px solid var(--amazon-gray-medium); /* Separator */
+}
+
+.subtotal-info, .discount-info, .total-info {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.1em;
+    margin-bottom: 10px;
+    color: var(--amazon-blue);
+}
+
+.subtotal-info {
+    font-weight: 500;
+}
+
+.discount-info {
+    color: var(--amazon-red); /* Indicate negative value */
+    font-weight: 500;
+}
+
+.total-info {
+    font-size: 1.3em;
+    font-weight: 700;
+    border-top: 1px solid var(--amazon-gray-medium);
+    padding-top: 10px;
+    margin-top: 10px;
+}
+
+.subtotal-amount, .discount-amount, .total-amount {
+    font-weight: 700;
+    color: var(--amazon-blue); /* Consistent price color */
+}
+
+.discount-amount {
+    color: var(--amazon-red);
+}
+
+.free-shipping-note {
+    font-size: 0.9em;
+    color: var(--amazon-green);
+    margin-top: 5px;
+    text-align: right;
+}
+
+/* Promo Code Section */
+.promo-code-box {
+    padding: 15px; /* Slightly less padding */
+}
+
+.promo-code-box h4 {
+    margin-bottom: 10px;
+    font-size: 1em;
+    font-weight: 500;
+}
+
+.promo-code-input-group {
+    display: flex;
+    gap: 8px;
+}
+
+.promo-code-input-group input {
+    flex-grow: 1;
+    padding: 8px 10px;
+    border: 1px solid var(--amazon-gray-medium);
+    border-radius: 4px;
+    font-size: 0.9em;
+}
+
+.promo-code-input-group button {
+    background-color: #E7E7E7;
+    border: 1px solid #ADADAD;
+    color: #0F1111;
+    padding: 8px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9em;
+    white-space: nowrap;
+    transition: background-color 0.2s ease;
+}
+
+.promo-code-input-group button:hover {
+    background-color: #D4D4D4;
+}
+
+.promo-message {
+    margin-top: 10px;
+    font-size: 0.85em;
+    text-align: center;
+}
+
+.promo-message.error {
+    color: var(--amazon-red);
+}
+
+.promo-message.success {
+    color: var(--amazon-green);
+}
+
+/* Address & Payment Box */
+.address-payment-box h4 {
+    margin-bottom: 10px;
+    font-size: 1.1em;
+}
+
+.address-form input {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid var(--amazon-gray-medium);
+    border-radius: 4px;
+    font-size: 0.9em;
+}
+
+.saved-address-display {
+    padding: 10px 0;
+    border-bottom: 1px solid var(--amazon-gray-medium);
+    margin-bottom: 15px;
+}
+
+.address-line {
+    margin: 5px 0;
+    font-size: 0.95em;
+    color: var(--amazon-blue);
+}
+
+.payment-options {
+    display: flex;
+    flex-direction: column; /* Stack payment options */
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.payment-btn {
+    flex-direction: row; /* Icon and text in a row */
+    justify-content: flex-start; /* Align to left */
+    padding: 10px 15px;
+    border: 1px solid var(--amazon-gray-medium);
+    background-color: var(--amazon-white);
+    color: var(--amazon-blue);
+    border-radius: 7px;
+    font-size: 0.95em;
+    width: 100%; /* Take full width */
+    text-align: left; /* Text aligns left */
+    box-shadow: none; /* No individual shadow */
+}
+
+.payment-btn img {
+    width: 30px; /* Smaller payment logos */
+    height: 30px;
+    margin-right: 10px;
+    margin-bottom: 0; /* Remove bottom margin */
+    object-fit: contain;
+}
+
+.payment-btn span {
+    font-weight: 500;
+}
+
+.payment-btn:hover {
+    background-color: #F7F7F7;
+    border-color: #BBBBBB;
+    transform: translateY(0); /* No lift on hover */
+    box-shadow: none;
+}
+
+.payment-btn.selected {
+    background-color: #FFF8E6; /* Light yellow background for selected */
+    border-color: var(--amazon-orange); /* Amazon orange border */
+    box-shadow: 0 0 0 2px var(--amazon-orange); /* Orange glow on selected */
+    transform: scale(1); /* No scale on selected */
+}
+
+.selected-payment-message {
+    margin-top: 15px;
+    font-size: 0.9em;
+    color: var(--amazon-green);
+    text-align: left;
+}
+
+.empty-cart-message {
+    text-align: center;
+    color: var(--amazon-gray-dark);
+    padding: 30px 0;
+    font-style: italic;
+    font-size: 1em;
+    background-color: var(--amazon-gray-light);
+    border-radius: 8px;
+    margin: 20px 0;
+    border: 1px dashed var(--amazon-gray-medium);
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+    .cart-container {
+        flex-direction: column; /* Stack main content and sidebar */
+        gap: 25px;
+        max-width: 600px; /* Narrower for tablets */
+        /* Recalculate max-height when stacked */
+        max-height: calc(100vh - 80px - 20px); /* Adjust for padding and wrapper margin */
+    }
+
+    .cart-main-content,
+    .order-summary-box,
+    .promo-code-box,
+    .address-payment-box {
+        padding: 20px;
+    }
+
+    h2.cart-title {
+        font-size: 1.8em;
+    }
+
+    /* Adjust scrollable area height for stacked layout */
+    .cart-items-scrollable-area {
+        /* This will be tricky, needs to be dynamic based on sibling heights */
+        /* For simplicity, we'll give it a fixed height that allows scroll,
+           but ideally it would be calculated using JS/Flex basis with 0 height */
+        max-height: 400px; /* Example fixed height for scroll on smaller screens */
+        min-height: 150px; /* Ensure it's not too small if few items */
+    }
+}
+
+@media (max-width: 576px) {
+    .cart-page-wrapper {
+        padding-top: 40px; /* Less padding on very small screens */
+    }
+
+    .cart-main-content {
+        padding: 15px;
+    }
+
+    h2.cart-title {
+        font-size: 1.5em;
+        padding-bottom: 10px;
+        margin-bottom: 15px;
+    }
+
+    .cart-item {
+        flex-wrap: wrap; /* Allow items to wrap */
+        justify-content: center;
+        text-align: center;
+        padding: 15px 0;
+    }
+
+    .item-image-wrapper {
+        width: 100px;
+        height: 100px;
+        margin-bottom: 10px;
+    }
+
+    .item-details {
+        text-align: center;
+        width: 100%; /* Take full width on wrap */
+    }
+
+    .item-quantity-controls {
+        justify-content: center;
+        width: 100%;
+    }
+
+    .item-total-price {
+        width: 100%;
+        text-align: center;
+        margin-top: 15px;
+    }
+
+    .promo-code-input-group {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .promo-code-input-group button {
+        width: 100%;
+    }
+
+    .payment-btn span {
+        font-size: 0.9em;
+    }
+
+    .cart-items-scrollable-area {
+        max-height: 300px; /* Adjust scrollable height for very small screens */
+    }
+}

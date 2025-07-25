@@ -1,0 +1,96 @@
+#productsection{
+  height: 100vh;
+}
+
+.product-section {
+  background-color: #003366;
+  color: white;
+  padding: 60px 20px;
+  text-align: center;
+  height: 100vh;
+}
+
+/* Heading */
+.section-heading {
+  font-size: 2.5rem;
+  margin-bottom: 40px;
+  font-weight: bold;
+}
+
+/* Grid layout */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+/* Individual product card */
+.product-card {
+  background-color: #002244;
+  border-radius: 16px;
+  padding: 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Hover effect */
+.product-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+}
+
+/* Product image */
+.productimage {
+  width: 100%;
+  height: 200px;
+  object-fit: contain;
+  margin-bottom: 20px;
+}
+
+/* Product title */
+.product-title {
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+}
+
+/* MRP */
+.product-mrp {
+  text-decoration: line-through;
+  color: #bbb;
+  font-size: 0.95rem;
+  margin-bottom: 5px;
+}
+
+/* Discount */
+.product-discount {
+  font-weight: bold;
+  font-size: 1rem;
+  margin-bottom: 5px;
+}
+
+/* Final Price */
+.product-price {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+/* Buy Button */
+.buy-btn {
+  background-color: #00bfff;
+  color: #fff;
+  border: none;
+  padding: 10px 22px;
+  border-radius: 25px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.buy-btn:hover {
+  background-color: #009acd;
+}

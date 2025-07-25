@@ -1,0 +1,217 @@
+/* Basic styling for the body */
+@font-face {
+  font-family: Manoj;
+  src: url(../Fonts/3856NeueMachina.woff2);
+}
+
+/* Home component styling */
+.Home {
+  background-image: url(https://i.postimg.cc/Tw2pX4WB/milad-fakurian-se-A-FPPXL-M-unsplash.jpg);
+background-position: center;
+background-size: cover;
+background-repeat: no-repeat;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 90px 20px 20px 20px;
+ /* Add perspective to the parent */
+}
+
+.book-display-container {
+  display: flex;
+  flex-direction: column; /* Stack vertically on small screens */
+  gap: 20px;
+  width: 90%;
+  max-width: 1200px;
+  height: 600px; /* Fixed height for the overall "book" structure */
+ 
+  border-radius: 15px;
+ 
+  overflow: hidden; /* Important to keep content within bounds */
+}
+
+@media (min-width: 850px) { /* Adjust breakpoint as needed for side-by-side */
+  .book-display-container {
+    flex-direction: row; /* Side-by-side on larger screens */
+  }
+}
+
+.text-page, .image-page-wrapper {
+  flex: 1; /* Each takes equal space */
+  padding: 30px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Text Page Styles */
+
+.product-text {
+  width: 100%;
+  max-width: 500px; /* Limit text width for readability */
+  text-align: center;
+}
+
+@media (min-width: 850px) {
+  .product-text {
+    text-align: left;
+  }
+}
+
+.product-text h1 {
+  font-size: 2.8em;
+  margin-bottom: 20px;
+  line-height: 1.2;
+  color:white;
+  font-family: Manoj;
+}
+
+.product-text p {
+  font-size: 1.1em;
+  line-height: 1.6;
+  margin-bottom: 30px;
+  max-height: 180px; /* Limit height for consistent layout */
+  overflow: hidden; 
+  color: rgb(109, 168, 210);
+  font-family: Manoj;/*
+  font-family: Manoj; Hide overflow if text is too long */
+}
+
+.product-price {
+  font-size: 1.4em;
+  margin-bottom: 30px;
+}
+
+.product-price .mrp {
+  text-decoration: line-through;
+  color: #888;
+  margin-right: 15px;
+}
+
+.product-price .discount {
+  background-color: #ff4500;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-weight: bold;
+  margin-right: 15px;
+}
+
+.product-price .current-price {
+  font-size: 1.7em;
+  font-weight: bold;
+  color: orange;
+}
+
+.product-actions {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
+
+@media (min-width: 850px) {
+  .product-actions {
+    justify-content: flex-start;
+  }
+}
+
+.buy-now-btn,
+.know-more-btn {
+  padding: 12px 25px;
+  font-size: 1em;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.buy-now-btn {
+  background-color: #007bff;
+  color: white;
+}
+
+.buy-now-btn:hover {
+  background-color: #0056b3;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 123, 255, 0.3);
+}
+
+.know-more-btn {
+  background-color: #6c757d;
+  color: white;
+}
+
+.know-more-btn:hover {
+  background-color: #5a6268;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(108, 117, 125, 0.3);
+}
+
+/* Image Page Styles */
+.image-page-wrapper {
+  position: relative; /* For perspective on the flipping element */
+  perspective: 1000px; /* Perspective for the flipping page */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.image-page {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transform-origin: left center; /* Flip from the left edge */
+  background-color: transparent; /* Make sure the flipping element itself doesn't have a solid background */
+}
+
+.image-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  box-sizing: border-box;
+  background-color: transparent; /* Image content background */
+}
+
+.image-content.back {
+  transform: rotateY(180deg); /* Start the back side rotated */
+}
+
+.product-image {
+  max-width: 100%;
+  max-height: 100%; /* Ensure image fits within its container */
+  object-fit: cover; /* Prevents stretching */
+  
+}
+
+.Home-loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  font-size: 1.5em;
+  color: #555;
+}
+.image-page-wrapper {
+  perspective: 1000px;
+  width: 100%;
+  height: 100%;
+}
+
+.product-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+}

@@ -1,0 +1,41 @@
+.about-section {
+ background-image: url(https://i.postimg.cc/Tw2pX4WB/milad-fakurian-se-A-FPPXL-M-unsplash.jpg);
+ background-position: center;
+background-size: cover;
+background-repeat: no-repeat;
+  padding: 60px 20px;
+  color: #1a1a1a;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.about-container {
+  max-width: 900px;
+  margin: auto;
+  background: rgba(255, 255, 255, 0.484);
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 0 20px rgba(0, 60, 120, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+.about-title {
+  font-size: 2.8rem;
+  margin-bottom: 20px;
+  color: #003366;
+  text-align: center;
+  font-weight: 700;
+}
+
+.about-subtitle {
+  font-size: 1.8rem;
+  margin-top: 40px;
+  margin-bottom: 10px;
+  color: #70767a;
+  font-weight: 600;
+}
+
+.about-text {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  margin-bottom: 20px;
+}
