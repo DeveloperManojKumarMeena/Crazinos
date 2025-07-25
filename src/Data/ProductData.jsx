@@ -8,7 +8,7 @@ const ProductData = (props) => {
       mrp: 1999,
       discount: 35,
       price: 1299,
-      image: "public/image/megakit.png",
+      image: "/image/megakit.png",
       color:"",
       background:""
     },
@@ -18,7 +18,7 @@ const ProductData = (props) => {
       mrp: 2399,
       discount: 38,
       price: 1499,
-      image: "public/image/funKIt.png",
+      image: "/image/funKIt.png",
       color:"",
       background:""
     },
@@ -28,7 +28,7 @@ const ProductData = (props) => {
       mrp: 2199,
       discount: 36,
       price: 1399,
-      image: "public/image/SmileKit.png",
+      image: "/image/SmileKit.png",
       color:"#FFA600",
       background:"#1A1035",
       distext:"#F1F1F1"
